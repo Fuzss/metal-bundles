@@ -1,9 +1,10 @@
 package fuzs.metalbundles;
 
+import fuzs.iteminteractions.api.v1.ItemContainerProviderBuilder;
+import fuzs.iteminteractions.api.v1.ItemContainerProviderSerializers;
 import fuzs.metalbundles.init.ModRegistry;
 import fuzs.metalbundles.world.item.MetalBundleProvider;
-import fuzs.puzzlesapi.api.iteminteractions.v1.ItemContainerProviderBuilder;
-import fuzs.puzzlesapi.api.iteminteractions.v1.ItemContainerProviderSerializers;
+import fuzs.puzzleslib.api.core.v1.ContentRegistrationFlags;
 import fuzs.puzzleslib.api.core.v1.ModConstructor;
 import fuzs.puzzleslib.api.core.v1.context.CreativeModeTabContext;
 import fuzs.puzzleslib.api.item.v2.CreativeModeTabConfigurator;
@@ -20,25 +21,36 @@ public class MetalBundles implements ModConstructor {
     @Override
     public void onConstructMod() {
         ModRegistry.touch();
+        registerSerializers();
+    }
+
+    private static void registerSerializers() {
         ItemContainerProviderSerializers.register(MetalBundleProvider.class, id("bundle"), jsonElement -> {
             ItemContainerProviderBuilder builder = new ItemContainerProviderBuilder(jsonElement);
             return new MetalBundleProvider(builder.capacity, builder.dyeColor);
         });
     }
 
-    @Override
-    public void onRegisterCreativeModeTabs(CreativeModeTabContext context) {
-        context.registerCreativeModeTab(CreativeModeTabConfigurator.from(MOD_ID).icon(() -> new ItemStack(ModRegistry.IRON_BUNDLE_ITEM.get())).displayItems((itemDisplayParameters, output) -> {
-            output.accept(ModRegistry.LEATHER_BUNDLE_ITEM.get());
-            output.accept(ModRegistry.COPPER_BUNDLE_ITEM.get());
-            output.accept(ModRegistry.IRON_BUNDLE_ITEM.get());
-            output.accept(ModRegistry.GOLDEN_BUNDLE_ITEM.get());
-            output.accept(ModRegistry.DIAMOND_BUNDLE_ITEM.get());
-            output.accept(ModRegistry.NETHERITE_BUNDLE_ITEM.get());
-        }));
-    }
-
     public static ResourceLocation id(String path) {
         return new ResourceLocation(MOD_ID, path);
+    }
+
+    @Override
+    public void onRegisterCreativeModeTabs(CreativeModeTabContext context) {
+        context.registerCreativeModeTab(CreativeModeTabConfigurator.from(MOD_ID)
+                .icon(() -> new ItemStack(ModRegistry.IRON_BUNDLE_ITEM.value()))
+                .displayItems((itemDisplayParameters, output) -> {
+                    output.accept(ModRegistry.LEATHER_BUNDLE_ITEM.value());
+                    output.accept(ModRegistry.COPPER_BUNDLE_ITEM.value());
+                    output.accept(ModRegistry.IRON_BUNDLE_ITEM.value());
+                    output.accept(ModRegistry.GOLDEN_BUNDLE_ITEM.value());
+                    output.accept(ModRegistry.DIAMOND_BUNDLE_ITEM.value());
+                    output.accept(ModRegistry.NETHERITE_BUNDLE_ITEM.value());
+                }));
+    }
+
+    @Override
+    public ContentRegistrationFlags[] getContentRegistrationFlags() {
+        return new ContentRegistrationFlags[]{ContentRegistrationFlags.COPY_TAG_RECIPES};
     }
 }

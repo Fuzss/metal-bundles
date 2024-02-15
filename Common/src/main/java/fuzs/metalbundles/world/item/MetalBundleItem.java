@@ -1,7 +1,8 @@
 package fuzs.metalbundles.world.item;
 
-import fuzs.puzzlesapi.api.iteminteractions.v1.ContainerItemHelper;
-import fuzs.puzzlesapi.api.iteminteractions.v1.provider.ItemContainerProvider;
+import fuzs.iteminteractions.api.v1.ContainerItemHelper;
+import fuzs.iteminteractions.api.v1.provider.ItemContainerProvider;
+import fuzs.iteminteractions.impl.world.item.container.ForwardingItemContainerProvider;
 import fuzs.puzzleslib.api.core.v1.Proxy;
 import net.minecraft.ChatFormatting;
 import net.minecraft.network.chat.Component;
@@ -26,19 +27,10 @@ import java.util.function.Predicate;
 import java.util.stream.Stream;
 
 public class MetalBundleItem extends Item {
-    public static final int LEATHER_BUNDLE_CAPACITY = 64;
-    public static final int COPPER_BUNDLE_CAPACITY = 128;
-    public static final int IRON_BUNDLE_CAPACITY = 512;
-    public static final int GOLDEN_BUNDLE_CAPACITY = 1024;
-    public static final int DIAMOND_BUNDLE_CAPACITY = 2048;
-    public static final int NETHERITE_BUNDLE_CAPACITY = 4096;
     private static final int BAR_COLOR = Mth.color(0.4F, 0.4F, 1.0F);
 
-    public final int capacity;
-
-    public MetalBundleItem(int capacity, Properties properties) {
+    public MetalBundleItem(Properties properties) {
         super(properties);
-        this.capacity = capacity;
     }
 
     @Override
@@ -65,7 +57,7 @@ public class MetalBundleItem extends Item {
 
     @Override
     public int getBarWidth(ItemStack stack) {
-        return Math.min(1 + 12 * getContentWeight(stack) / this.capacity, 13);
+        return Math.min(1 + 12 * getContentWeight(stack) / this.getCapacity(stack), 13);
     }
 
     @Override
@@ -75,7 +67,9 @@ public class MetalBundleItem extends Item {
 
     @Override
     public void appendHoverText(ItemStack stack, Level level, List<Component> tooltipComponents, TooltipFlag isAdvanced) {
-        tooltipComponents.add(Component.translatable("item.minecraft.bundle.fullness", getContentWeight(stack), this.capacity).withStyle(ChatFormatting.GRAY));
+        tooltipComponents.add(Component.translatable("item.minecraft.bundle.fullness", getContentWeight(stack),
+                this.getCapacity(stack)
+        ).withStyle(ChatFormatting.GRAY));
     }
 
     @Override
@@ -85,6 +79,11 @@ public class MetalBundleItem extends Item {
         SimpleContainer container = provider.getItemContainer(itemEntity.getItem(), null, true);
         Stream<ItemStack> stream = ContainerItemHelper.INSTANCE.getListFromContainer(container).stream().filter(Predicate.not(ItemStack::isEmpty));
         ItemUtils.onContainerDestroyed(itemEntity, stream);
+    }
+
+    public int getCapacity(ItemStack itemStack) {
+        // TODO proper implementation in the library
+        return ((MetalBundleProvider) ((ForwardingItemContainerProvider) ContainerItemHelper.INSTANCE.getItemContainerProviderOrThrow(itemStack)).provider()).getCapacity();
     }
 
     public static int getContentWeight(ItemStack containerStack) {
@@ -106,7 +105,7 @@ public class MetalBundleItem extends Item {
 
     public static int getItemWeight(ItemStack stack) {
         if (stack.getItem() instanceof MetalBundleItem item) {
-            return item.capacity / 16 + getContentWeight(stack, null);
+            return item.getCapacity(stack) / 16 + getContentWeight(stack, null);
         } else {
             return ContainerItemHelper.INSTANCE.getItemWeight(stack);
         }

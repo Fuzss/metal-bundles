@@ -6,15 +6,28 @@ import fuzs.metalbundles.world.item.MetalBundleItem;
 import fuzs.puzzleslib.api.client.core.v1.ClientModConstructor;
 import fuzs.puzzleslib.api.client.core.v1.context.ItemModelPropertiesContext;
 import fuzs.puzzleslib.api.core.v1.Proxy;
+import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.player.Player;
 
 public class MetalBundlesClient implements ClientModConstructor {
+    public static final ResourceLocation ITEM_MODEL_PROPETY_FILLED = MetalBundles.id("filled");
 
     @Override
     public void onRegisterItemModelProperties(ItemModelPropertiesContext context) {
-        context.registerItemProperty(MetalBundles.id("filled"), (itemStack, clientLevel, livingEntity, i) -> {
-            Player player = livingEntity instanceof Player ? (Player) livingEntity : Proxy.INSTANCE.getClientPlayer();
-            return (float) MetalBundleItem.getContentWeight(itemStack, player) / ((MetalBundleItem) itemStack.getItem()).capacity;
-        }, ModRegistry.LEATHER_BUNDLE_ITEM.get(), ModRegistry.COPPER_BUNDLE_ITEM.get(), ModRegistry.IRON_BUNDLE_ITEM.get(), ModRegistry.GOLDEN_BUNDLE_ITEM.get(), ModRegistry.DIAMOND_BUNDLE_ITEM.get(), ModRegistry.NETHERITE_BUNDLE_ITEM.get());
+        context.registerItemProperty(ITEM_MODEL_PROPETY_FILLED,
+                (itemStack, clientLevel, livingEntity, i) -> {
+                    Player player = livingEntity instanceof Player ?
+                            (Player) livingEntity :
+                            Proxy.INSTANCE.getClientPlayer();
+                    return (float) MetalBundleItem.getContentWeight(itemStack, player) /
+                            ((MetalBundleItem) itemStack.getItem()).getCapacity(itemStack);
+                },
+                ModRegistry.LEATHER_BUNDLE_ITEM.value(),
+                ModRegistry.COPPER_BUNDLE_ITEM.value(),
+                ModRegistry.IRON_BUNDLE_ITEM.value(),
+                ModRegistry.GOLDEN_BUNDLE_ITEM.value(),
+                ModRegistry.DIAMOND_BUNDLE_ITEM.value(),
+                ModRegistry.NETHERITE_BUNDLE_ITEM.value()
+        );
     }
 }
