@@ -19,8 +19,7 @@ public class MetalBundlesClient implements ClientModConstructor {
                     Player player = livingEntity instanceof Player ?
                             (Player) livingEntity :
                             Proxy.INSTANCE.getClientPlayer();
-                    return (float) MetalBundleItem.getContentWeight(itemStack, player) /
-                            ((MetalBundleItem) itemStack.getItem()).getCapacity(itemStack);
+                    return MetalBundleItem.getContentWeight(itemStack, player) > 0 ? 1.0F : 0.0F;
                 },
                 ModRegistry.LEATHER_BUNDLE_ITEM.value(),
                 ModRegistry.COPPER_BUNDLE_ITEM.value(),
