@@ -2,10 +2,11 @@ package fuzs.metalbundles.data.client;
 
 import fuzs.metalbundles.MetalBundles;
 import fuzs.metalbundles.init.ModRegistry;
-import fuzs.puzzleslib.api.client.data.v2.AbstractModelProvider;
-import fuzs.puzzleslib.api.client.data.v2.models.ItemModelGenerationHelper;
-import fuzs.puzzleslib.api.client.data.v2.models.ModelLocationHelper;
-import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
+import fuzs.metalbundles.world.item.MetalBundleItem;
+import fuzs.puzzleslib.common.api.client.data.v2.AbstractModelProvider;
+import fuzs.puzzleslib.common.api.client.data.v2.models.ItemModelGenerationHelper;
+import fuzs.puzzleslib.common.api.client.data.v2.models.ModelLocationHelper;
+import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;
 import net.minecraft.client.data.models.ItemModelGenerators;
 import net.minecraft.client.data.models.model.ItemModelUtils;
 import net.minecraft.client.data.models.model.ModelTemplates;
@@ -13,9 +14,13 @@ import net.minecraft.client.renderer.item.BundleSelectedItemSpecialRenderer;
 import net.minecraft.client.renderer.item.ItemModel;
 import net.minecraft.client.renderer.item.properties.conditional.BundleHasSelectedItem;
 import net.minecraft.client.renderer.item.properties.select.DisplayContext;
+import net.minecraft.client.resources.model.sprite.Material;
 import net.minecraft.core.Holder;
 import net.minecraft.resources.Identifier;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.DyeColor;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.ItemDisplayContext;
+import net.minecraft.world.item.Items;
 
 import java.util.Map;
 
@@ -55,41 +60,38 @@ public class ModModelProvider extends AbstractModelProvider {
     }
 
     public final void createMetalBundleItem(ItemModelGenerators itemModelGenerators, Item bundleItem, Map<DyeColor, Holder.Reference<Item>> bundleItems, String string, String openString) {
-        Identifier stringResourceLocation = ModelLocationHelper.getItemTexture(MetalBundles.id(string));
-        Identifier openStringResourceLocation = ModelLocationHelper.getItemTexture(MetalBundles.id(openString));
-        this.createMetalBundleItem(itemModelGenerators,
-                bundleItem,
-                Items.BUNDLE,
-                stringResourceLocation,
-                openStringResourceLocation);
+        Material stringTexture = ModelLocationHelper.getItemTexture(MetalBundles.id(string));
+        Material openTexture = ModelLocationHelper.getItemTexture(MetalBundles.id(openString));
+        this.createMetalBundleItem(itemModelGenerators, bundleItem, Items.BUNDLE, stringTexture, openTexture);
         for (Map.Entry<DyeColor, Holder.Reference<Item>> entry : bundleItems.entrySet()) {
             this.createMetalBundleItem(itemModelGenerators,
                     entry.getValue().value(),
-                    BundleItem.getByColor(entry.getKey()),
-                    stringResourceLocation,
-                    openStringResourceLocation);
+                    MetalBundleItem.getVanillaByColor(entry.getKey()),
+                    stringTexture,
+                    openTexture);
         }
     }
 
     /**
-     * Partially copied from {@link ItemModelGenerators#generateBundleModels(Item)}.
+     * @see ItemModelGenerators#generateBundleModels(Item)
      */
-    public final void createMetalBundleItem(ItemModelGenerators itemModelGenerators, Item bundleItem, Item vanillaBundleItem, Identifier stringResourceLocation, Identifier openStringResourceLocation) {
+    public final void createMetalBundleItem(ItemModelGenerators itemModelGenerators, Item bundleItem, Item baseBundleItem, Material stringTexture, Material openTexture) {
         Identifier identifier = ItemModelGenerationHelper.createLayeredItemModel(bundleItem,
-                ModelLocationHelper.getItemTexture(vanillaBundleItem),
-                stringResourceLocation,
+                ModelLocationHelper.getItemTexture(baseBundleItem),
+                stringTexture,
                 ModelTemplates.TWO_LAYERED_ITEM,
                 itemModelGenerators.modelOutput);
         Identifier openBackResourceLocation = ItemModelGenerationHelper.createFlatItemModel(ModelLocationHelper.getItemModel(
                         bundleItem,
                         "_open_back"),
-                ModelLocationHelper.getItemTexture(vanillaBundleItem, "_open_back"),
+                ModelLocationHelper.getItemTexture(baseBundleItem, "_open_back"),
                 ModelTemplates.FLAT_ITEM,
                 itemModelGenerators.modelOutput);
-        Identifier openFrontResourceLocation = ItemModelGenerationHelper.createLayeredItemModel(
-                ModelLocationHelper.getItemModel(bundleItem, "_open_front"),
-                ModelLocationHelper.getItemTexture(vanillaBundleItem, "_open_front"),
-                openStringResourceLocation,
+        Identifier openFrontResourceLocation = ItemModelGenerationHelper.createLayeredItemModel(ModelLocationHelper.getItemModel(
+                        bundleItem,
+                        "_open_front"),
+                ModelLocationHelper.getItemTexture(baseBundleItem, "_open_front"),
+                openTexture,
                 ModelTemplates.TWO_LAYERED_ITEM,
                 itemModelGenerators.modelOutput);
         ItemModel.Unbaked unbaked = ItemModelUtils.plainModel(identifier);

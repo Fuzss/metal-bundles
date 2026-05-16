@@ -1,2 +1,4 @@
 classTweaker    v2  official
 transitive-accessible   method  net/minecraft/client/gui/screens/inventory/AbstractContainerScreen  addItemSlotMouseAction  (Lnet/minecraft/client/gui/ItemSlotMouseAction;)V
+accessible  field   net/minecraft/world/item/BundleItem FULL_BAR_COLOR  I
+accessible  field   net/minecraft/world/item/BundleItem BAR_COLOR   I

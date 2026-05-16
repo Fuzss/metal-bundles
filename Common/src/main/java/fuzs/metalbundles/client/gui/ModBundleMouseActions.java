@@ -22,9 +22,9 @@ public class ModBundleMouseActions extends BundleMouseActions {
         return slot.getItem().is(ModRegistry.BUNDLES_ITEM_TAG_KEY);
     }
 
-    public static void onAfterInit(Minecraft minecraft, AbstractContainerScreen<?> screen, int screenWidth, int screenHeight, List<AbstractWidget> widgets, UnaryOperator<AbstractWidget> addWidget, Consumer<AbstractWidget> removeWidget) {
-        // this is not really needed, as we use our custom item interaction handling for bundles in inventories
-        // but this does fix a very minor issue where the last selected item remains shown on the bundle item after picking it up with the cursor
+    public static void onAfterInit(AbstractContainerScreen<?> screen, int screenWidth, int screenHeight, List<AbstractWidget> widgets, UnaryOperator<AbstractWidget> addWidget, Consumer<AbstractWidget> removeWidget) {
+        // This is not really needed, as we use our custom item interaction handling for bundles in inventories.
+        // But this does fix a very minor issue where the last selected item remains shown on the bundle item after picking it up with the cursor.
         screen.addItemSlotMouseAction(new ModBundleMouseActions(screen.minecraft));
     }
 }

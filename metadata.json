@@ -1,9 +1,10 @@
 {
+    "minecraft": "26.1.2",
     "mod": {
         "id": "metalbundles",
         "group": "fuzs.metalbundles",
         "name": "Metal Bundles",
-        "version": "21.11.0",
+        "version": "26.1.0",
         "authors": [
             "Fuzs"
         ],
@@ -44,13 +45,13 @@
     ],
     "links": [
         {
-            "name": "github",
-            "slug": "metalbundles"
-        },
-        {
             "name": "curseforge",
             "slug": "metal-bundles",
             "id": "891325"
+        },
+        {
+            "name": "github",
+            "slug": "metal-bundles"
         },
         {
             "name": "modrinth",

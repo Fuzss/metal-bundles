@@ -1,9 +1,9 @@
 package fuzs.metalbundles.data;
 
 import fuzs.metalbundles.init.ModRegistry;
-import fuzs.puzzleslib.api.data.v2.core.DataProviderContext;
-import fuzs.puzzleslib.api.data.v2.tags.AbstractTagAppender;
-import fuzs.puzzleslib.api.data.v2.tags.AbstractTagProvider;
+import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;
+import fuzs.puzzleslib.common.api.data.v2.tags.AbstractTagAppender;
+import fuzs.puzzleslib.common.api.data.v2.tags.AbstractTagProvider;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
@@ -21,8 +21,7 @@ public class ModItemTagProvider extends AbstractTagProvider<Item> {
 
     @Override
     public void addTags(HolderLookup.Provider registries) {
-        // do not add to the vanilla bundles item tag, it is used for dying bundles
-        // this will result in converting to vanilla items when crafted with a dye
+        // Do not add to the vanilla bundles item tag, it is used for the custom bundle mouse action.
         this.tag(ModRegistry.BUNDLES_ITEM_TAG_KEY)
                 .addTag(ModRegistry.COPPER_BUNDLES_ITEM_TAG_KEY)
                 .addTag(ModRegistry.IRON_BUNDLES_ITEM_TAG_KEY)

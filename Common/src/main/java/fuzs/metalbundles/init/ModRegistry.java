@@ -1,12 +1,13 @@
 package fuzs.metalbundles.init;
 
 import com.google.common.collect.Maps;
-import fuzs.iteminteractions.api.v1.provider.ItemContentsProvider;
+import fuzs.iteminteractions.common.api.v2.world.item.storage.ItemStorage;
+import fuzs.iteminteractions.common.api.v2.world.item.storage.ItemStorageType;
 import fuzs.metalbundles.MetalBundles;
 import fuzs.metalbundles.world.item.MetalBundleItem;
-import fuzs.metalbundles.world.item.container.MetalBundleProvider;
-import fuzs.puzzleslib.api.init.v3.registry.RegistryManager;
-import fuzs.puzzleslib.api.init.v3.tags.TagFactory;
+import fuzs.metalbundles.world.item.storage.MetalBundleContentsStorage;
+import fuzs.puzzleslib.common.api.init.v3.registry.RegistryManager;
+import fuzs.puzzleslib.common.api.init.v3.tags.TagFactory;
 import net.minecraft.core.Holder;
 import net.minecraft.core.component.DataComponents;
 import net.minecraft.tags.TagKey;
@@ -37,10 +38,10 @@ public class ModRegistry {
     public static final Map<DyeColor, Holder.Reference<Item>> NETHERITE_BUNDLE_ITEMS = registerMetalBundleItems(
             "netherite_bundle",
             () -> new Item.Properties().fireResistant());
-    public static final Holder.Reference<ItemContentsProvider.Type<?>> METAL_BUNDLE_ITEM_CONTENTS_PROVIDER_TYPE = REGISTRIES.register(
-            ItemContentsProvider.REGISTRY_KEY,
+    public static final Holder.Reference<ItemStorageType<?>> METAL_BUNDLE_ITEM_STORAGE_TYPE = REGISTRIES.register(
+            ItemStorage.REGISTRY_KEY,
             "metal_bundle",
-            () -> new ItemContentsProvider.Type<>(MetalBundleProvider.CODEC));
+            () -> new ItemStorageType<>(MetalBundleContentsStorage.CODEC));
     public static final Holder.Reference<CreativeModeTab> CREATIVE_MODE_TAB = REGISTRIES.registerCreativeModeTab(
             IRON_BUNDLE_ITEMS.get(DyeColor.ORANGE));
 
@@ -66,6 +67,7 @@ public class ModRegistry {
             String s = dyeColor.getName() + "_" + path;
             bundleItems.put(dyeColor, registerMetalBundleItem(s, itemPropertiesSupplier));
         }
+
         return Maps.immutableEnumMap(bundleItems);
     }
 
