@@ -1,7 +1,7 @@
-package fuzs.metalbundles.client;
+package fuzs.metalbundles.common.client;
 
-import fuzs.metalbundles.MetalBundles;
-import fuzs.metalbundles.client.gui.ModBundleMouseActions;
+import fuzs.metalbundles.common.MetalBundles;
+import fuzs.metalbundles.common.client.gui.ModBundleMouseActions;
 import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import fuzs.puzzleslib.common.api.client.event.v1.gui.ScreenEvents;
 import fuzs.puzzleslib.common.api.config.v3.ConfigHolder;

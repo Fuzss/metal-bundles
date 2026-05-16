@@ -1,13 +1,13 @@
-package fuzs.metalbundles.world.item.storage;
+package fuzs.metalbundles.common.world.item.storage;
 
 import com.mojang.serialization.MapCodec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 import fuzs.iteminteractions.common.api.v2.world.item.storage.BundleContentsStorage;
 import fuzs.iteminteractions.common.api.v2.world.item.storage.ItemStorageType;
 import fuzs.iteminteractions.common.api.v2.world.item.storage.StorageOptions;
-import fuzs.metalbundles.MetalBundles;
-import fuzs.metalbundles.config.ServerConfig;
-import fuzs.metalbundles.init.ModRegistry;
+import fuzs.metalbundles.common.MetalBundles;
+import fuzs.metalbundles.common.config.ServerConfig;
+import fuzs.metalbundles.common.init.ModRegistry;
 import net.minecraft.world.item.ItemStack;
 import org.apache.commons.lang3.math.Fraction;
 
@@ -21,25 +21,25 @@ public class MetalBundleContentsStorage extends BundleContentsStorage {
     }
 
     @Override
-    public Fraction getCapacityMultiplier(ItemStack containerStack) {
-        int capacityMultiplier = this.getConfigBasedCapacityMultiplier(containerStack);
+    public Fraction getCapacityMultiplier(ItemStack itemStack) {
+        int capacityMultiplier = this.getConfigBasedCapacityMultiplier(itemStack);
         if (capacityMultiplier != -1) {
             return Fraction.getFraction(capacityMultiplier, DEFAULT_CAPACITY_MULTIPLIER);
         } else {
-            return super.getCapacityMultiplier(containerStack);
+            return super.getCapacityMultiplier(itemStack);
         }
     }
 
-    private int getConfigBasedCapacityMultiplier(ItemStack containerStack) {
-        if (containerStack.is(ModRegistry.COPPER_BUNDLES_ITEM_TAG_KEY)) {
+    private int getConfigBasedCapacityMultiplier(ItemStack itemStack) {
+        if (itemStack.is(ModRegistry.COPPER_BUNDLES_ITEM_TAG_KEY)) {
             return MetalBundles.CONFIG.get(ServerConfig.class).copperCapacityMultiplier;
-        } else if (containerStack.is(ModRegistry.IRON_BUNDLES_ITEM_TAG_KEY)) {
+        } else if (itemStack.is(ModRegistry.IRON_BUNDLES_ITEM_TAG_KEY)) {
             return MetalBundles.CONFIG.get(ServerConfig.class).ironCapacityMultiplier;
-        } else if (containerStack.is(ModRegistry.GOLDEN_BUNDLES_ITEM_TAG_KEY)) {
+        } else if (itemStack.is(ModRegistry.GOLDEN_BUNDLES_ITEM_TAG_KEY)) {
             return MetalBundles.CONFIG.get(ServerConfig.class).goldenCapacityMultiplier;
-        } else if (containerStack.is(ModRegistry.DIAMOND_BUNDLES_ITEM_TAG_KEY)) {
+        } else if (itemStack.is(ModRegistry.DIAMOND_BUNDLES_ITEM_TAG_KEY)) {
             return MetalBundles.CONFIG.get(ServerConfig.class).diamondCapacityMultiplier;
-        } else if (containerStack.is(ModRegistry.NETHERITE_BUNDLES_ITEM_TAG_KEY)) {
+        } else if (itemStack.is(ModRegistry.NETHERITE_BUNDLES_ITEM_TAG_KEY)) {
             return MetalBundles.CONFIG.get(ServerConfig.class).netheriteCapacityMultiplier;
         } else {
             return -1;

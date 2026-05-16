@@ -1,9 +1,9 @@
-package fuzs.metalbundles.data;
+package fuzs.metalbundles.common.data;
 
 import com.google.common.collect.Maps;
-import fuzs.metalbundles.MetalBundles;
-import fuzs.metalbundles.init.ModRegistry;
-import fuzs.metalbundles.world.item.MetalBundleItem;
+import fuzs.metalbundles.common.MetalBundles;
+import fuzs.metalbundles.common.init.ModRegistry;
+import fuzs.metalbundles.common.world.item.MetalBundleItem;
 import fuzs.puzzleslib.common.api.data.v2.AbstractRecipeProvider;
 import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;
 import net.minecraft.core.Holder;

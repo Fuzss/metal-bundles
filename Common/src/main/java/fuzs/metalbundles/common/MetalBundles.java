@@ -1,7 +1,7 @@
-package fuzs.metalbundles;
+package fuzs.metalbundles.common;
 
-import fuzs.metalbundles.config.ServerConfig;
-import fuzs.metalbundles.init.ModRegistry;
+import fuzs.metalbundles.common.config.ServerConfig;
+import fuzs.metalbundles.common.init.ModRegistry;
 import fuzs.puzzleslib.common.api.config.v3.ConfigHolder;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import net.minecraft.resources.Identifier;

@@ -1,11 +1,11 @@
-package fuzs.metalbundles.init;
+package fuzs.metalbundles.common.init;
 
 import com.google.common.collect.Maps;
 import fuzs.iteminteractions.common.api.v2.world.item.storage.ItemStorage;
 import fuzs.iteminteractions.common.api.v2.world.item.storage.ItemStorageType;
-import fuzs.metalbundles.MetalBundles;
-import fuzs.metalbundles.world.item.MetalBundleItem;
-import fuzs.metalbundles.world.item.storage.MetalBundleContentsStorage;
+import fuzs.metalbundles.common.MetalBundles;
+import fuzs.metalbundles.common.world.item.MetalBundleItem;
+import fuzs.metalbundles.common.world.item.storage.MetalBundleContentsStorage;
 import fuzs.puzzleslib.common.api.init.v3.registry.RegistryManager;
 import fuzs.puzzleslib.common.api.init.v3.tags.TagFactory;
 import net.minecraft.core.Holder;
@@ -43,7 +43,7 @@ public class ModRegistry {
             "metal_bundle",
             () -> new ItemStorageType<>(MetalBundleContentsStorage.CODEC));
     public static final Holder.Reference<CreativeModeTab> CREATIVE_MODE_TAB = REGISTRIES.registerCreativeModeTab(
-            IRON_BUNDLE_ITEMS.get(DyeColor.ORANGE));
+            GOLDEN_BUNDLE_ITEMS.get(DyeColor.RED));
 
     static final TagFactory TAGS = TagFactory.make(MetalBundles.MOD_ID);
     public static final TagKey<Item> BUNDLES_ITEM_TAG_KEY = TAGS.registerItemTag("bundles");

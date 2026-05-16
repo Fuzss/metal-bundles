@@ -1,9 +1,9 @@
 package fuzs.metalbundles.neoforge.client;
 
-import fuzs.metalbundles.MetalBundles;
-import fuzs.metalbundles.client.MetalBundlesClient;
-import fuzs.metalbundles.data.client.ModLanguageProvider;
-import fuzs.metalbundles.data.client.ModModelProvider;
+import fuzs.metalbundles.common.MetalBundles;
+import fuzs.metalbundles.common.client.MetalBundlesClient;
+import fuzs.metalbundles.common.data.client.ModLanguageProvider;
+import fuzs.metalbundles.common.data.client.ModModelProvider;
 import fuzs.puzzleslib.common.api.client.core.v1.ClientModConstructor;
 import fuzs.puzzleslib.neoforge.api.data.v2.core.DataProviderHelper;
 import net.neoforged.api.distmarker.Dist;

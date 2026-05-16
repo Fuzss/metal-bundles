@@ -1,8 +1,8 @@
-package fuzs.metalbundles.data.client;
+package fuzs.metalbundles.common.data.client;
 
-import fuzs.metalbundles.MetalBundles;
-import fuzs.metalbundles.init.ModRegistry;
-import fuzs.metalbundles.world.item.MetalBundleItem;
+import fuzs.metalbundles.common.MetalBundles;
+import fuzs.metalbundles.common.init.ModRegistry;
+import fuzs.metalbundles.common.world.item.MetalBundleItem;
 import fuzs.puzzleslib.common.api.client.data.v2.AbstractModelProvider;
 import fuzs.puzzleslib.common.api.client.data.v2.models.ItemModelGenerationHelper;
 import fuzs.puzzleslib.common.api.client.data.v2.models.ModelLocationHelper;

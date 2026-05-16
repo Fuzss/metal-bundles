@@ -1,9 +1,9 @@
-package fuzs.metalbundles.data;
+package fuzs.metalbundles.common.data;
 
 import fuzs.iteminteractions.common.api.v2.data.AbstractItemStorageDefinitionsProvider;
 import fuzs.iteminteractions.common.api.v2.world.item.storage.StorageOptions;
-import fuzs.metalbundles.init.ModRegistry;
-import fuzs.metalbundles.world.item.storage.MetalBundleContentsStorage;
+import fuzs.metalbundles.common.init.ModRegistry;
+import fuzs.metalbundles.common.world.item.storage.MetalBundleContentsStorage;
 import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;
 import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;

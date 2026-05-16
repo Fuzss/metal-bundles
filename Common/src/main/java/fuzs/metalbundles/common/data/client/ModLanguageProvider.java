@@ -1,7 +1,7 @@
-package fuzs.metalbundles.data.client;
+package fuzs.metalbundles.common.data.client;
 
-import fuzs.metalbundles.MetalBundles;
-import fuzs.metalbundles.init.ModRegistry;
+import fuzs.metalbundles.common.MetalBundles;
+import fuzs.metalbundles.common.init.ModRegistry;
 import fuzs.puzzleslib.common.api.client.data.v2.AbstractLanguageProvider;
 import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;
 import net.minecraft.core.Holder;

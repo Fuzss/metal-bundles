@@ -1,6 +1,6 @@
 package fuzs.metalbundles.fabric;
 
-import fuzs.metalbundles.MetalBundles;
+import fuzs.metalbundles.common.MetalBundles;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import net.fabricmc.api.ModInitializer;
 

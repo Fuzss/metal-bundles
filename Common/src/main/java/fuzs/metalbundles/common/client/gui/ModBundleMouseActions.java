@@ -1,6 +1,6 @@
-package fuzs.metalbundles.client.gui;
+package fuzs.metalbundles.common.client.gui;
 
-import fuzs.metalbundles.init.ModRegistry;
+import fuzs.metalbundles.common.init.ModRegistry;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.BundleMouseActions;
 import net.minecraft.client.gui.components.AbstractWidget;

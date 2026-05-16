@@ -1,6 +1,6 @@
-package fuzs.metalbundles.data;
+package fuzs.metalbundles.common.data;
 
-import fuzs.metalbundles.init.ModRegistry;
+import fuzs.metalbundles.common.init.ModRegistry;
 import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;
 import fuzs.puzzleslib.common.api.data.v2.tags.AbstractTagAppender;
 import fuzs.puzzleslib.common.api.data.v2.tags.AbstractTagProvider;
