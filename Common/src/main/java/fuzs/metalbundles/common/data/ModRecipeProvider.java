@@ -3,7 +3,7 @@ package fuzs.metalbundles.common.data;
 import com.google.common.collect.Maps;
 import fuzs.metalbundles.common.MetalBundles;
 import fuzs.metalbundles.common.init.ModRegistry;
-import fuzs.metalbundles.common.world.item.MetalBundleItem;
+import fuzs.metalbundles.common.world.item.ItemStorageBundleItem;
 import fuzs.puzzleslib.common.api.data.v2.AbstractRecipeProvider;
 import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;
 import net.minecraft.core.Holder;
@@ -66,7 +66,7 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
     private static Map<DyeColor, Holder.Reference<Item>> getVanillaBundleItems() {
         return Arrays.stream(DyeColor.values())
                 .collect(Maps.toImmutableEnumMap(Function.<DyeColor>identity(),
-                        (DyeColor dyeColor) -> MetalBundleItem.getVanillaByColor(dyeColor).builtInRegistryHolder()));
+                        (DyeColor dyeColor) -> ItemStorageBundleItem.getVanillaByColor(dyeColor).builtInRegistryHolder()));
     }
 
     private void bundleRecipes(TagKey<Item> tagKey, Item ingredientItem, Holder.Reference<Item> bundleIngredientItem, Holder.Reference<Item> bundleResultItem, Map<DyeColor, Holder.Reference<Item>> bundleIngredientItems, Map<DyeColor, Holder.Reference<Item>> bundleResultItems) {

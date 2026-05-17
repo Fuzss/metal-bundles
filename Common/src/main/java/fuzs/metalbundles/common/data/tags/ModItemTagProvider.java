@@ -1,4 +1,4 @@
-package fuzs.metalbundles.common.data;
+package fuzs.metalbundles.common.data.tags;
 
 import fuzs.metalbundles.common.init.ModRegistry;
 import fuzs.puzzleslib.common.api.data.v2.core.DataProviderContext;

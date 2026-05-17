@@ -2,7 +2,7 @@ package fuzs.metalbundles.common.data.client;
 
 import fuzs.metalbundles.common.MetalBundles;
 import fuzs.metalbundles.common.init.ModRegistry;
-import fuzs.metalbundles.common.world.item.MetalBundleItem;
+import fuzs.metalbundles.common.world.item.ItemStorageBundleItem;
 import fuzs.puzzleslib.common.api.client.data.v2.AbstractModelProvider;
 import fuzs.puzzleslib.common.api.client.data.v2.models.ItemModelGenerationHelper;
 import fuzs.puzzleslib.common.api.client.data.v2.models.ModelLocationHelper;
@@ -66,7 +66,7 @@ public class ModModelProvider extends AbstractModelProvider {
         for (Map.Entry<DyeColor, Holder.Reference<Item>> entry : bundleItems.entrySet()) {
             this.createMetalBundleItem(itemModelGenerators,
                     entry.getValue().value(),
-                    MetalBundleItem.getVanillaByColor(entry.getKey()),
+                    ItemStorageBundleItem.getVanillaByColor(entry.getKey()),
                     stringTexture,
                     openTexture);
         }

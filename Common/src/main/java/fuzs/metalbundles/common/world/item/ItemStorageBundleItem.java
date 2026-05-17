@@ -4,9 +4,9 @@ import fuzs.iteminteractions.common.api.v2.world.item.storage.ItemStorageHolder;
 import fuzs.puzzleslib.common.api.util.v1.CommonHelper;
 import net.minecraft.world.item.*;
 
-public class MetalBundleItem extends BundleItem {
+public class ItemStorageBundleItem extends BundleItem {
 
-    public MetalBundleItem(Properties properties) {
+    public ItemStorageBundleItem(Properties properties) {
         super(properties);
     }
 

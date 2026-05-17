@@ -17,16 +17,16 @@ public class MetalBundleContentsStorage extends BundleContentsStorage {
     });
 
     public MetalBundleContentsStorage(StorageOptions storageOptions) {
-        super(DEFAULT_CAPACITY_MULTIPLIER, storageOptions);
+        super(storageOptions);
     }
 
     @Override
-    public Fraction getCapacityMultiplier(ItemStack itemStack) {
+    public Fraction getMaxWeight(ItemStack itemStack) {
         int capacityMultiplier = this.getConfigBasedCapacityMultiplier(itemStack);
         if (capacityMultiplier != -1) {
             return Fraction.getFraction(capacityMultiplier, DEFAULT_CAPACITY_MULTIPLIER);
         } else {
-            return super.getCapacityMultiplier(itemStack);
+            return super.getMaxWeight(itemStack);
         }
     }
 

@@ -4,7 +4,7 @@ import com.google.common.collect.Maps;
 import fuzs.iteminteractions.common.api.v2.world.item.storage.ItemStorage;
 import fuzs.iteminteractions.common.api.v2.world.item.storage.ItemStorageType;
 import fuzs.metalbundles.common.MetalBundles;
-import fuzs.metalbundles.common.world.item.MetalBundleItem;
+import fuzs.metalbundles.common.world.item.ItemStorageBundleItem;
 import fuzs.metalbundles.common.world.item.storage.MetalBundleContentsStorage;
 import fuzs.puzzleslib.common.api.init.v3.registry.RegistryManager;
 import fuzs.puzzleslib.common.api.init.v3.tags.TagFactory;
@@ -77,7 +77,7 @@ public class ModRegistry {
 
     private static Holder.Reference<Item> registerMetalBundleItem(String path, Supplier<Item.Properties> itemPropertiesSupplier) {
         return REGISTRIES.registerItem(path,
-                MetalBundleItem::new,
+                ItemStorageBundleItem::new,
                 () -> itemPropertiesSupplier.get()
                         .stacksTo(1)
                         .component(DataComponents.BUNDLE_CONTENTS, BundleContents.EMPTY));
