@@ -18,6 +18,7 @@ import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.item.crafting.Ingredient;
+import net.minecraft.world.level.block.ColorCollection;
 
 import java.util.Arrays;
 import java.util.Map;
@@ -66,7 +67,8 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
     private static Map<DyeColor, Holder.Reference<Item>> getVanillaBundleItems() {
         return Arrays.stream(DyeColor.values())
                 .collect(Maps.toImmutableEnumMap(Function.<DyeColor>identity(),
-                        (DyeColor dyeColor) -> ItemStorageBundleItem.getVanillaByColor(dyeColor).builtInRegistryHolder()));
+                        (DyeColor dyeColor) -> ItemStorageBundleItem.getVanillaByColor(dyeColor)
+                                .builtInRegistryHolder()));
     }
 
     private void bundleRecipes(TagKey<Item> tagKey, Item ingredientItem, Holder.Reference<Item> bundleIngredientItem, Holder.Reference<Item> bundleResultItem, Map<DyeColor, Holder.Reference<Item>> bundleIngredientItems, Map<DyeColor, Holder.Reference<Item>> bundleResultItems) {
@@ -100,22 +102,9 @@ public class ModRecipeProvider extends AbstractRecipeProvider {
      * @see VanillaRecipeProvider#bundleRecipes()
      */
     private void bundleRecipes(TagKey<Item> tagKey, Map<DyeColor, Holder.Reference<Item>> bundleItems) {
-        this.dyedBundleRecipe(tagKey, Items.WHITE_DYE, bundleItems.get(DyeColor.WHITE));
-        this.dyedBundleRecipe(tagKey, Items.ORANGE_DYE, bundleItems.get(DyeColor.ORANGE));
-        this.dyedBundleRecipe(tagKey, Items.MAGENTA_DYE, bundleItems.get(DyeColor.MAGENTA));
-        this.dyedBundleRecipe(tagKey, Items.LIGHT_BLUE_DYE, bundleItems.get(DyeColor.LIGHT_BLUE));
-        this.dyedBundleRecipe(tagKey, Items.YELLOW_DYE, bundleItems.get(DyeColor.YELLOW));
-        this.dyedBundleRecipe(tagKey, Items.LIME_DYE, bundleItems.get(DyeColor.LIME));
-        this.dyedBundleRecipe(tagKey, Items.PINK_DYE, bundleItems.get(DyeColor.PINK));
-        this.dyedBundleRecipe(tagKey, Items.GRAY_DYE, bundleItems.get(DyeColor.GRAY));
-        this.dyedBundleRecipe(tagKey, Items.LIGHT_GRAY_DYE, bundleItems.get(DyeColor.LIGHT_GRAY));
-        this.dyedBundleRecipe(tagKey, Items.CYAN_DYE, bundleItems.get(DyeColor.CYAN));
-        this.dyedBundleRecipe(tagKey, Items.PURPLE_DYE, bundleItems.get(DyeColor.PURPLE));
-        this.dyedBundleRecipe(tagKey, Items.BLUE_DYE, bundleItems.get(DyeColor.BLUE));
-        this.dyedBundleRecipe(tagKey, Items.BROWN_DYE, bundleItems.get(DyeColor.BROWN));
-        this.dyedBundleRecipe(tagKey, Items.GREEN_DYE, bundleItems.get(DyeColor.GREEN));
-        this.dyedBundleRecipe(tagKey, Items.RED_DYE, bundleItems.get(DyeColor.RED));
-        this.dyedBundleRecipe(tagKey, Items.BLACK_DYE, bundleItems.get(DyeColor.BLACK));
+        ColorCollection.zipApply(Items.DYE, ColorCollection.VALUES, (Item item, DyeColor color) -> {
+            this.dyedBundleRecipe(tagKey, item, bundleItems.get(color));
+        });
     }
 
     /**

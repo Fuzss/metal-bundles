@@ -32,23 +32,6 @@ public class ItemStorageBundleItem extends BundleItem {
     }
 
     public static Item getVanillaByColor(DyeColor dyeColor) {
-        return switch (dyeColor) {
-            case WHITE -> Items.WHITE_BUNDLE;
-            case ORANGE -> Items.ORANGE_BUNDLE;
-            case MAGENTA -> Items.MAGENTA_BUNDLE;
-            case LIGHT_BLUE -> Items.LIGHT_BLUE_BUNDLE;
-            case YELLOW -> Items.YELLOW_BUNDLE;
-            case LIME -> Items.LIME_BUNDLE;
-            case PINK -> Items.PINK_BUNDLE;
-            case GRAY -> Items.GRAY_BUNDLE;
-            case LIGHT_GRAY -> Items.LIGHT_GRAY_BUNDLE;
-            case CYAN -> Items.CYAN_BUNDLE;
-            case BLUE -> Items.BLUE_BUNDLE;
-            case BROWN -> Items.BROWN_BUNDLE;
-            case GREEN -> Items.GREEN_BUNDLE;
-            case RED -> Items.RED_BUNDLE;
-            case BLACK -> Items.BLACK_BUNDLE;
-            case PURPLE -> Items.PURPLE_BUNDLE;
-        };
+        return Items.DYED_BUNDLE.pick(dyeColor);
     }
 }
