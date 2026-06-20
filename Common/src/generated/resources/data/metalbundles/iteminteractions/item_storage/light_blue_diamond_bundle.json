@@ -1,8 +1,4 @@
 {
   "type": "metalbundles:metal_bundle",
-  "storage_options": {
-    "disallowed": true,
-    "filter_container_items": true
-  },
   "supported_items": "metalbundles:light_blue_diamond_bundle"
 }

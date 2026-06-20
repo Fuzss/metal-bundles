@@ -4,11 +4,11 @@
         "id": "metalbundles",
         "group": "fuzs.metalbundles",
         "name": "Metal Bundles",
-        "version": "26.1.0",
+        "version": "26.1.1",
         "authors": [
             "Fuzs"
         ],
-        "description": "Use bundles like never before with many intuitive interactions. And there's more bundles, much larger!",
+        "description": "Upgrade to bigger bundle tiers! Use them like never before with new intuitive inventory interactions.",
         "license": "MPL-2.0"
     },
     "dependencies": [
