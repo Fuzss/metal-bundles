@@ -16,6 +16,10 @@ public class MetalBundleContentsStorage extends BundleContentsStorage {
         return instance.group(itemContentsCodec()).apply(instance, MetalBundleContentsStorage::new);
     });
 
+    public MetalBundleContentsStorage() {
+        this(StorageOptions.DEFAULT);
+    }
+
     public MetalBundleContentsStorage(StorageOptions storageOptions) {
         super(storageOptions);
     }

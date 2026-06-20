@@ -2,7 +2,8 @@ package fuzs.metalbundles.common.world.item;
 
 import fuzs.iteminteractions.common.api.v2.world.item.storage.ItemStorageHolder;
 import fuzs.puzzleslib.common.api.util.v1.CommonHelper;
-import net.minecraft.world.item.*;
+import net.minecraft.world.item.BundleItem;
+import net.minecraft.world.item.ItemStack;
 
 public class ItemStorageBundleItem extends BundleItem {
 
@@ -29,9 +30,5 @@ public class ItemStorageBundleItem extends BundleItem {
         return ItemStorageHolder.ofItem(itemStack)
                 .getBarColor(itemStack, CommonHelper.getClientPlayer())
                 .orElseGet(() -> super.getBarColor(itemStack));
-    }
-
-    public static Item getVanillaByColor(DyeColor dyeColor) {
-        return Items.DYED_BUNDLE.pick(dyeColor);
     }
 }

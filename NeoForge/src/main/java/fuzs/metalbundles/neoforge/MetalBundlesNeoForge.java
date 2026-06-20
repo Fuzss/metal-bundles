@@ -2,7 +2,7 @@ package fuzs.metalbundles.neoforge;
 
 import fuzs.metalbundles.common.MetalBundles;
 import fuzs.metalbundles.common.data.ModItemStorageDefinitionsProvider;
-import fuzs.metalbundles.common.data.tags.ModItemTagProvider;
+import fuzs.metalbundles.common.data.tags.ModItemTagsProvider;
 import fuzs.metalbundles.common.data.ModRecipeProvider;
 import fuzs.puzzleslib.common.api.core.v1.ModConstructor;
 import fuzs.puzzleslib.neoforge.api.data.v2.core.DataProviderHelper;
@@ -16,6 +16,6 @@ public class MetalBundlesNeoForge {
         DataProviderHelper.registerDataProviders(MetalBundles.MOD_ID,
                 ModItemStorageDefinitionsProvider::new,
                 ModRecipeProvider::new,
-                ModItemTagProvider::new);
+                ModItemTagsProvider::new);
     }
 }

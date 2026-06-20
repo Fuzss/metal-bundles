@@ -8,14 +8,12 @@ import net.minecraft.core.Holder;
 import net.minecraft.core.HolderLookup;
 import net.minecraft.core.registries.Registries;
 import net.minecraft.tags.TagKey;
-import net.minecraft.world.item.DyeColor;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.ColorCollection;
 
-import java.util.Map;
+public class ModItemTagsProvider extends AbstractTagProvider<Item> {
 
-public class ModItemTagProvider extends AbstractTagProvider<Item> {
-
-    public ModItemTagProvider(DataProviderContext context) {
+    public ModItemTagsProvider(DataProviderContext context) {
         super(Registries.ITEM, context);
     }
 
@@ -30,26 +28,24 @@ public class ModItemTagProvider extends AbstractTagProvider<Item> {
                 .addTag(ModRegistry.NETHERITE_BUNDLES_ITEM_TAG_KEY);
         this.addMetalBundleTag(ModRegistry.COPPER_BUNDLES_ITEM_TAG_KEY,
                 ModRegistry.COPPER_BUNDLE_ITEM,
-                ModRegistry.COPPER_BUNDLE_ITEMS);
+                ModRegistry.DYED_COPPER_BUNDLE_ITEM);
         this.addMetalBundleTag(ModRegistry.IRON_BUNDLES_ITEM_TAG_KEY,
                 ModRegistry.IRON_BUNDLE_ITEM,
-                ModRegistry.IRON_BUNDLE_ITEMS);
+                ModRegistry.DYED_IRON_BUNDLE_ITEM);
         this.addMetalBundleTag(ModRegistry.GOLDEN_BUNDLES_ITEM_TAG_KEY,
                 ModRegistry.GOLDEN_BUNDLE_ITEM,
-                ModRegistry.GOLDEN_BUNDLE_ITEMS);
+                ModRegistry.DYED_GOLDEN_BUNDLE_ITEM);
         this.addMetalBundleTag(ModRegistry.DIAMOND_BUNDLES_ITEM_TAG_KEY,
                 ModRegistry.DIAMOND_BUNDLE_ITEM,
-                ModRegistry.DIAMOND_BUNDLE_ITEMS);
+                ModRegistry.DYED_DIAMOND_BUNDLE_ITEM);
         this.addMetalBundleTag(ModRegistry.NETHERITE_BUNDLES_ITEM_TAG_KEY,
                 ModRegistry.NETHERITE_BUNDLE_ITEM,
-                ModRegistry.NETHERITE_BUNDLE_ITEMS);
+                ModRegistry.DYED_NETHERITE_BUNDLE_ITEM);
     }
 
-    private void addMetalBundleTag(TagKey<Item> tagKey, Holder.Reference<Item> bundleItem, Map<DyeColor, Holder.Reference<Item>> bundleItems) {
-        AbstractTagAppender<Item> tagAppender = this.tag(tagKey);
-        tagAppender.add(bundleItem);
-        for (Holder.Reference<Item> holder : bundleItems.values()) {
-            tagAppender.add(holder);
-        }
+    private void addMetalBundleTag(TagKey<Item> key, Holder.Reference<Item> bundleItem, ColorCollection<Holder.Reference<Item>> dyedBundleItem) {
+        AbstractTagAppender<Item> tag = this.tag(key);
+        tag.add(bundleItem);
+        dyedBundleItem.forEach(tag::add);
     }
 }
