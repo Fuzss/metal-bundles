@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "metalbundles:gray_golden_bundle_from_dying"
+        "recipes": "metalbundles:gray_golden_bundle_from_dying"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

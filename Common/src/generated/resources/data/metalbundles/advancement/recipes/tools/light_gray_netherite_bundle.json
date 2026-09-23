@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "metalbundles:light_gray_netherite_bundle"
+        "recipes": "metalbundles:light_gray_netherite_bundle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

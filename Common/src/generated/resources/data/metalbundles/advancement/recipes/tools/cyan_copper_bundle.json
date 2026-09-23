@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "metalbundles:cyan_copper_bundle"
+        "recipes": "metalbundles:cyan_copper_bundle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

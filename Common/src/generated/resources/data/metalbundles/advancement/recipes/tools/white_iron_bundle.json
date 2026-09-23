@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "metalbundles:white_iron_bundle"
+        "recipes": "metalbundles:white_iron_bundle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

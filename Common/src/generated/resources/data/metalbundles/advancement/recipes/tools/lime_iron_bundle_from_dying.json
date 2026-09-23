@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "metalbundles:lime_iron_bundle_from_dying"
+        "recipes": "metalbundles:lime_iron_bundle_from_dying"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

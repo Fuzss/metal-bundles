@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "metalbundles:red_netherite_bundle"
+        "recipes": "metalbundles:red_netherite_bundle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

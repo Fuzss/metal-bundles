@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "metalbundles:purple_copper_bundle"
+        "recipes": "metalbundles:purple_copper_bundle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

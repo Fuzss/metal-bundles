@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "metalbundles:blue_golden_bundle"
+        "recipes": "metalbundles:blue_golden_bundle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

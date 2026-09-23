@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "metalbundles:light_blue_netherite_bundle_from_dying"
+        "recipes": "metalbundles:light_blue_netherite_bundle_from_dying"
       },
       "trigger": "minecraft:recipe_unlocked"
     }

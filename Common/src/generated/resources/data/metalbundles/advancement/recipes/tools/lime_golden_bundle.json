@@ -13,7 +13,7 @@
     },
     "has_the_recipe": {
       "conditions": {
-        "recipe": "metalbundles:lime_golden_bundle"
+        "recipes": "metalbundles:lime_golden_bundle"
       },
       "trigger": "minecraft:recipe_unlocked"
     }
